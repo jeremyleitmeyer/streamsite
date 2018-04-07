@@ -1,0 +1,28 @@
+{
+  "name": "streamsite",
+  "version": "0.0.1",
+  "description": "An app for streaming media with your friends!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyleitmeyer/streamsite.git"
+  },
+  "keywords": [
+    "stream",
+    "media",
+    "group",
+    "watch",
+    "show",
+    "streaming",
+    "groupwatch"
+  ],
+  "author": "Jeremy, Florian, and Doris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremyleitmeyer/streamsite/issues"
+  },
+  "homepage": "https://github.com/jeremyleitmeyer/streamsite#readme"
+}
