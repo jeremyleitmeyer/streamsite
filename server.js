@@ -9,9 +9,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
+const auth = require('./config/keys');
 
 // for the dev DB 
-mongoose.connect('mongodb://jeremy-stream:7A1s2d98@ds237979.mlab.com:37979/dev-stream', {
+mongoose.connect(auth.MONGO_KEY, {
   useMongoClient: true
 }); 
 mongoose.connection.on('error', (err) => {
