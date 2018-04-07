@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<% include partials/head %>
+</head>
+<body>
+<header>
+    <% include partials/nav %>
+</header>
+<div class="container">
+
+	<div class="page-header text-center">
+			<h1><span class="fa fa-certificate"></span> Stream Page</h1>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+				<div class="well">
+					<h3><span class="fa fa-user"></span> User info </h3>
+					<p>
+						<strong>id</strong>: <%= user._id %><br>
+						<strong>username</strong>: <%= user.local.username %><br>
+						<strong>password</strong>: <%= user.local.password %>
+					</p>
+				</div>
+		</div>
+	</div>
+	
+
+</div>
+</body>
+</html>
