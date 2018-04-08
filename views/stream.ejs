@@ -20,6 +20,11 @@
 					<p>
 						<strong>id</strong>: <%= user._id %><br>
 						<strong>username</strong>: <%= user.local.username %><br>
+						<% if(user.discordId) {%>
+							<strong>Discord ID</strong>: <%= user.discordId %><br>
+						<%}else{%>
+							<p><a href="https://discordapp.com/api/oauth2/authorize?client_id=432635108583800832&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fstream%2FdiscordId&response_type=code&scope=identify">Link your Discord!</a></p>
+						<%}%>
 						<strong>password</strong>: <%= user.local.password %>
 					</p>
 				</div>
