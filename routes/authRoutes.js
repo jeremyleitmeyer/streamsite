@@ -1,4 +1,5 @@
 const passport = require('passport')
+const User = require('../models/user');
 
 module.exports = (app, passport) => {
 
@@ -33,17 +34,14 @@ module.exports = (app, passport) => {
     console.log(req)
   });
 
-  // app.get('/auth/google', passport.authenticate('google', {
-  //   scope: ['profile', 'email'],
-  // }));
+  app.get('https://discordapp.com/api/oauth2/authorize?client_id=432635108583800832&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fstream%2FdiscordId&response_type=code&scope=identify', isLoggedIn, passport.authenticate('discord'));
 
-  // app.get('/auth/google/callback', passport.authenticate('google', {
-  //   successRedirect: '/',
-  //   failureRedirect: '/signup',
-  //   failureFlash: true
-  // }), (req, res) => {
-  //   console.log(req)
-  // });
+  app.get('/stream/discordId', passport.authenticate('discord', {
+    failureRedirect: '/stream',
+    failureFlash: true
+  }), (req, res) => {
+    res.redirect('/stream')
+  });
 
   app.get('/logout', (req, res) => {
     req.logout();

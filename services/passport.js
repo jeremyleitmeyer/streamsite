@@ -1,6 +1,6 @@
 const passport = require('passport');
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const keys = require('../config/keys');
+const DiscordStrategy = require('passport-discord').Strategy;
+const keys = require('../config/keys');
 const bcrypt = require('bcrypt-nodejs');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
@@ -31,7 +31,7 @@ module.exports = (passport) => {
 				if (err) {
 					return done(err);
 				}
-		
+
 				if (user) {
 					return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 				} else {
@@ -73,27 +73,26 @@ module.exports = (passport) => {
 
 	}));
 
-	// import google cred and set callback route after getting google profile
-	// passport.use(new GoogleStrategy({
-	// 		clientID: keys.googleClientID,
-	// 		clientSecret: keys.googleClientSecret,
-	// 		callbackURL: '/auth/google/callback',
-	// 		proxy: true
-	// 	},
-	// 	async (accessToken, refreshToken, profile, done) => {
-
-	// 		const existingUser = await User.findOne({
-	// 			googleId: profile.id
-	// 		})
-	// 		if (existingUser) {
-	// 			done(null, existingUser);
-	// 		} else {
-	// 			const user = await new User({
-	// 				googleId: profile.id
-	// 			}).save();
-	// 			done(null, user);
-	// 		}
-	// 	}));
+	passport.use(new DiscordStrategy({
+		clientID: keys.CLIENT_ID,
+		clientSecret: keys.CLIENT_SECRET,
+		callbackURL: '/stream/discordId',
+		passReqToCallback: true
+	}, (req, accessToken, refreshToken, profile, cb, done) => {
+		console.log(req)
+		User.findOne({
+			'local.username': req.user.local.username
+		}, function (err, user) {
+			user.discordId = cb.id
+			user.save(function (err, user) {
+				if (err) {
+					console.log(err);
+				} else {
+					return done(null, user)
+				}
+			})
+		})
+	}));
 
 	var validPassword = (user, password) => {
 		return bcrypt.compareSync(password, user.local.password);
