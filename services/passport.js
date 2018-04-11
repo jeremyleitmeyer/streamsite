@@ -35,16 +35,21 @@ module.exports = (passport) => {
 				if (user) {
 					return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
 				} else {
-					var newUser = new User();
+					if (password === req.body.passwordConfirm) {
+						var newUser = new User();
 
-					newUser.local.username = username;
-					newUser.local.password = newUser.generateHash(password);
-					console.log(newUser.local)
-					newUser.save((err) => {
-						if (err)
-							throw err;
-						return done(null, newUser);
-					});
+						newUser.local.username = username;
+						newUser.local.password = newUser.generateHash(password);
+						console.log(newUser.local)
+						newUser.save((err) => {
+							if (err)
+								throw err;
+							return done(null, newUser);
+						});
+					} else {
+						return done(null, false, req.flash('signupMessage', 'Passwords do not match.'));
+					}
+
 				}
 			});
 		});

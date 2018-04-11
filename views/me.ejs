@@ -10,9 +10,9 @@
 <div class="container">
 
 	<div class="page-header text-center">
-			<h1><span class="fa fa-certificate"></span> Stream Page</h1>
+			<h1><span class="fa fa-certificate"></span>Profile Page</h1>
 	</div>
-
+	<!-- this layout is temporary I just wanted a way to see user data -Jeremy -->
 	<div class="row">
 		<div class="col-sm-6">
 				<div class="well">
@@ -23,7 +23,8 @@
 						<% if(user.discordId) {%>
 							<strong>Discord ID</strong>: <%= user.discordId %><br>
 						<%}else{%>
-							<p><a href="https://discordapp.com/api/oauth2/authorize?client_id=432635108583800832&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fstream%2FdiscordId&response_type=code&scope=identify">Link your Discord!</a></p>
+							<!-- dont lose this -->
+							<p><a href="https://discordapp.com/api/oauth2/authorize?client_id=432635108583800832&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fme%2FdiscordId&response_type=code&scope=identify">Link your Discord!</a></p>
 						<%}%>
 						<strong>password</strong>: <%= user.local.password %>
 					</p>
