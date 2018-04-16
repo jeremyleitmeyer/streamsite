@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
-const User = require('../models/user');
-const Group = require('../models/group');
+const User       = require('../models/user');
+const Group      = require('../models/group');
 
 module.exports = (app) => {
 
