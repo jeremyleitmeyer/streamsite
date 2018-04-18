@@ -11,13 +11,13 @@ const session = require('express-session');
 
 const auth = require('./config/keys');
 
-// for the dev DB 
+// for the dev DB
 mongoose.connect(auth.MONGO_KEY, {
-  useMongoClient: true
-}); 
+	useMongoClient: true
+});
 // debug for DB
-mongoose.connection.on('error', (err) => {
-    console.error('MongoDB error: %s', err);
+mongoose.connection.on('error', err => {
+	console.error('MongoDB error: %s', err);
 });
 mongoose.set('debug', true);
 
@@ -32,11 +32,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs'); //temp *********
 
 // required for passport
-app.use(session({
-  secret: 'testingstream',
-  resave: true,
-  saveUninitialized: true
-}));
+app.use(
+	session({
+		secret: 'testingstream',
+		resave: true,
+		saveUninitialized: true
+	})
+);
 
 // passport setup
 app.use(passport.initialize());
@@ -49,7 +51,7 @@ require('./routes/genRoutes.js')(app);
 require('./routes/groupRoutes.js')(app);
 
 // connect
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('listening on ' + port);
