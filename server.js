@@ -1,15 +1,14 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const passport = require('passport');
-const flash = require('connect-flash');
+const express      = require('express');
+const app          = express();
+const mongoose     = require('mongoose');
+const passport     = require('passport');
+const flash        = require('connect-flash');
 
-const morgan = require('morgan');
+const morgan       = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-
-const auth = require('./config/keys');
+const bodyParser   = require('body-parser');
+const session      = require('express-session');
+const auth         = require('./config/keys');
 
 // for the dev DB
 mongoose.connect(auth.MONGO_KEY, {
@@ -51,6 +50,7 @@ require('./routes/genRoutes.js')(app);
 require('./routes/groupRoutes.js')(app);
 
 // connect
+
 var port = process.env.PORT || 5000;
 app.listen(port);
 

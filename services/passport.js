@@ -1,9 +1,9 @@
-const passport = require('passport');
+const passport        = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
-const keys = require('../config/keys');
-const bcrypt = require('bcrypt-nodejs');
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+const keys 						= require('../config/keys');
+const bcrypt 					= require('bcrypt-nodejs');
+const LocalStrategy 	= require('passport-local').Strategy;
+const User 						= require('../models/user');
 
 
 module.exports = (passport) => {
@@ -49,7 +49,6 @@ module.exports = (passport) => {
 					} else {
 						return done(null, false, req.flash('signupMessage', 'Passwords do not match.'));
 					}
-
 				}
 			});
 		});
@@ -75,7 +74,6 @@ module.exports = (passport) => {
 
 			return done(null, user);
 		});
-
 	}));
 
 	passport.use(new DiscordStrategy({
