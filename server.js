@@ -50,7 +50,6 @@ require('./routes/genRoutes.js')(app);
 require('./routes/groupRoutes.js')(app);
 
 // connect
-
 var port = process.env.PORT || 5000;
 app.listen(port);
 

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
 var groupSchema = mongoose.Schema({
-
     admin: String,
+    officers: Array,
     password: String,
     members: Array,
     watchHistory: Array
