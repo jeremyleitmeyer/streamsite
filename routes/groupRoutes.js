@@ -4,16 +4,12 @@ const Group      = require('../models/group');
 
 module.exports = (app) => {
 
-  app.get('/groups', (req, res) => {
-
-  });
-
-  app.post('/groups/new', (req, res) => {
-
-  })
-
   app.get('/me/groups', (req, res) => {
     // users groups
+  })
+
+  app.post('/me/groups/new', (req, res) => {
+
   })
 
   function isLoggedIn(req, res, next) {

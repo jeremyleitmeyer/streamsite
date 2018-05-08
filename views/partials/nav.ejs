@@ -8,8 +8,13 @@
     </a>
 
     <ul class="nav navbar-nav">
-      <li><a href="/me">Profile</a></li>
-      <li><a href="/logout">Logout</a></li>
+      <% if(user === undefined) {%>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/login">Log In</a></li>
+      <%}else{%>
+        <li><a href="/me/<%= user._id%>">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <%};%>
     </ul>
 
   </div>
