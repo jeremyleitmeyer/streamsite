@@ -28,6 +28,16 @@
 						<%}%>
 						<strong>password</strong>: <%= user.local.password %>
 					</p>
+					<a href="/me=<%= user._id}%>"><button>Create a group</button></a>
+				</div>
+		</div>
+		<div class="col-sm-6">
+				<div class="well">
+					<form action="/groups/new" method="POST">
+						<input type="text" class="form-control" name="groupName">
+						<p>maybe list friends here or search by email?</p>
+						<input type="submit" name="Submit">
+					</form>
 				</div>
 		</div>
 	</div>
